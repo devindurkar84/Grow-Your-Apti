@@ -1,10 +1,11 @@
 <?php
+$emailError = "";
+$passwordError = "";
 if(isset($_POST["submit"]))
 {
 	$email = $_POST["uname"];
 	$pass1 = $_POST["psw"];
-	$emailError = "";
-	$passwordError = "";
+	
 
 	$con=mysql_connect("localhost","root","");
 	if(!$con)
