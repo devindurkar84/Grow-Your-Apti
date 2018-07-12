@@ -33,16 +33,16 @@ if(isset($_POST['signup']))
 				}
 				else
 				{
-						$con=mysql_connect("localhost","root","");
+						$con=mysqli_connect("localhost","root","","trial1");
 						if(!$con)
 							{	
-								die("could not connect".mysql_error());
+								die("could not connect".mysqli_error());
 							}
 
-						mysql_select_db("trial1",$con);
+						//mysql_select_db("trial1",$con);
 						
-						$execute = mysql_query("Select * from userdata",$con);
-						while($datarow = mysql_fetch_array($execute))
+						$execute = mysqli_query($con,"Select * from userdata");
+						while($datarow = mysqli_fetch_assoc($execute))
 						{
 							if($datarow["email"]==$email)
 							{
@@ -59,9 +59,9 @@ if(isset($_POST['signup']))
 					if(empty($emailError) && empty($passwordError) && empty($confirmError))
 					{
 						$query="INSERT INTO userdata(email,password1,password2) VALUE('$email','$pass1','$pass2')";
-						if(!mysql_query($query,$con))
+						if(!mysqli_query($con,$query))
 						{
-							die(mysql_error());
+							die(mysqli_error());
 						}
 						else
 						{

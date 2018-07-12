@@ -5,19 +5,18 @@ if(isset($_POST["submit"]))
 {
 	$email = $_POST["uname"];
 	$pass1 = $_POST["psw"];
-	
 
-	$con=mysql_connect("localhost","root","");
+	$con=mysqli_connect("localhost","root","","trial1");
 	if(!$con)
 	{	
-		die("could not connect".mysql_error());
+		die("could not connect".mysqli_error());
 	}
 
-	mysql_select_db("trial1",$con);
+	//mysql_select_db("trial1",$con);
 						
-	$execute = mysql_query("Select * from userdata",$con);
+	$execute = mysqli_query($con,"Select * from userdata");
 	
-	while($datarow = mysql_fetch_array($execute))
+	while($datarow = mysqli_fetch_assoc($execute))
 	{
 		if($datarow["email"]==$email && $datarow["password1"]==$pass1)
 		{
