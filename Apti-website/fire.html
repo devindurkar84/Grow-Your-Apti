@@ -1,0 +1,29 @@
+<html>
+<head>
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyD7rE1nsB9LtNY8G-FXan38_2BhYP6fiNI",
+      authDomain: "try1-d007.firebaseapp.com",
+      databaseURL: "https://try1-d007.firebaseio.com",
+      projectId: "try1-d007",
+      storageBucket: "try1-d007.appspot.com",
+      messagingSenderId: "400720972341"
+    };
+    firebase.initializeApp(config);
+  </script>
+</head>
+<body>
+
+  <h1 id="header1"></h1>
+  <script>
+    var dataref = firebase.database().ref();
+    var t = document.getElementById("header1");
+    dataref.on("child_changed",function(datasnap){
+      t.innerHTML = datasnap.val();
+    });
+  </script>
+
+</body>
+</html>

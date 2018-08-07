@@ -1,85 +1,142 @@
-<!DOCTYPE html>
 <html>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing:screen-width}
+<head>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <style>
+  body {font-family: Arial, Helvetica, sans-serif;}
+  * {box-sizing:screen-width}
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 25%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+      width: 25%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+  }
 
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-}
+  input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+  }
 
-hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-}
+  hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+  }
 
-/* Set a style for all buttons */
-button {
-   // background-color: #4CAF50;
-   background-color: black;
-    color: white;
-    padding: 14px 20px;
-    margin: 2px 0;
-    border: none;
-    cursor: pointer;
-    width: 50%;
-    opacity: 0.9;
-   text-align:center;
-   align:center;
-}
+  /* Set a style for all buttons */
+  button {
+     // background-color: #4CAF50;
+     background-color: black;
+      color: white;
+      padding: 14px 20px;
+      margin: 2px 0;
+      border: none;
+      cursor: pointer;
+      width: 50%;
+      opacity: 0.9;
+     text-align:center;
+     align:center;
+  }
 
-button:hover {
-    opacity:1;
-}
+  button:hover {
+      opacity:1;
+  }
 
-/* Extra styles for the cancel button 
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #f44336;
-}
-*/
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 10%;
-  //align:center;
-}
+  /* Extra styles for the cancel button
+  .cancelbtn {
+      padding: 14px 20px;
+      background-color: #f44336;
+  }
+  */
+  /* Float cancel and signup buttons and add an equal width */
+  .cancelbtn, .signupbtn {
+    float: left;
+    width: 10%;
+    //align:center;
+  }
 
-/* Add padding to container elements */
-.container {
-    padding: 16px;
-}
+  /* Add padding to container elements */
+  .container {
+      padding: 16px;
+  }
 
-/* Clear floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
+  /* Clear floats */
+  .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+  }
 
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
-       width: 100%;
-    }
-}
-</style>
+  /* Change styles for cancel button and signup button on extra small screens */
+  @media screen and (max-width: 300px) {
+      .cancelbtn, .signupbtn {
+         width: 100%;
+      }
+  }
+  </style>
+</head>
 <body>
 
-<h1>Your have just Registered for Grow Your Apti.</h1>
-<h3>Now Again login with New Account.<h3>
-Go To <a href="login.php">Login Page</a>
+<form style="border:1px solid #ccc" action="register.html" method="post" name = "myform">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required><br><br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required><br><br>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required><br><br>
+
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix" >
+      <!--<button type="button" class="cancelbtn" align="center">Cancel</button>-->
+      <button onclick="reg()" type="button"  class="signupbtn" name="signup" >Sign Up</button>
+    </div>
+  </div>
+</form>
+
+<script>
+  var config = {
+   apiKey: "AIzaSyD7rE1nsB9LtNY8G-FXan38_2BhYP6fiNI",
+   authDomain: "try1-d007.firebaseapp.com",
+   databaseURL: "https://try1-d007.firebaseio.com",
+   projectId: "try1-d007",
+   storageBucket: "try1-d007.appspot.com",
+   messagingSenderId: "400720972341"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+function reg(){
+  var email1 = document.forms["myform"]["email"].value;
+  var pass = document.forms["myform"]["psw"].value;
+  console.log(email1+" "+ pass);
+
+  firebase.auth().createUserWithEmailAndPassword(String(email1), pass).then(function() {
+    window.location.href = "https://try1-d007.firebaseapp.com/login.html";
+    // Sign-out successful.
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert("Error : " + errorMessage);
+    // ...
+  });
+}
+</script>
 
 </body>
 </html>
