@@ -28,13 +28,16 @@ function signo(){
 function questionbank(){
   console.log("hey");
   var i;
+  var bankno;
   for(i=1;i<=10;i++){
     var text = "q" + i;
+    var sb = "startbtn" + i;
+
+    document.getElementById(sb).style.display = "none";
     document.getElementById(text).style.display = "block";
   }
-  document.getElementById("startbtn").style.display = "none";
 
-  var fireref = firebase.database().ref("Bank1");
+  var fireref = firebase.database().ref("Bank5");
   i = 0;
     fireref.once("value",function(snap){
       snap.forEach(function(childsnap) {
