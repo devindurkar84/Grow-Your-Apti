@@ -109,12 +109,12 @@
 
 <script>
   var config = {
-   apiKey: "AIzaSyD7rE1nsB9LtNY8G-FXan38_2BhYP6fiNI",
-   authDomain: "try1-d007.firebaseapp.com",
-   databaseURL: "https://try1-d007.firebaseio.com",
-   projectId: "try1-d007",
-   storageBucket: "try1-d007.appspot.com",
-   messagingSenderId: "400720972341"
+    apiKey: "AIzaSyCS6jFiz5eFew6WEyXYCgl88UOPnR4uEcc",
+    authDomain: "aptipediasite.firebaseapp.com",
+    databaseURL: "https://aptipediasite.firebaseio.com",
+    projectId: "aptipediasite",
+    storageBucket: "aptipediasite.appspot.com",
+    messagingSenderId: "509127944690"
   };
   firebase.initializeApp(config);
 </script>
@@ -126,7 +126,7 @@ function reg(){
   console.log(email1+" "+ pass);
 
   firebase.auth().createUserWithEmailAndPassword(String(email1), pass).then(function() {
-    window.location.href = "https://try1-d007.firebaseapp.com/login.html";
+    window.location.href = "https://aptipediasite.firebaseapp.com/login.html";
     // Sign-out successful.
   }).catch(function(error) {
     // Handle Errors here.
