@@ -127,7 +127,7 @@ function reg(){
 
   firebase.auth().createUserWithEmailAndPassword(String(email1), pass).then(function() {
     window.location.href = "https://aptipediasite.firebaseapp.com/login.html";
-    // Sign-out successful.
+    // Sign-up successful.
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;

@@ -3,7 +3,7 @@ function validateForm(){
   var pass = document.forms["myform"]["psw"].value;
   console.log(uname +" "+ pass);
   firebase.auth().signInWithEmailAndPassword(uname, pass).then(function() {
-    window.location.href = "https://try1-d007.firebaseapp.com/content.html";
+    window.location.href = "https://aptipediasite.firebaseapp.com/content.html";
     // Sign-out successful.
   }).catch(function(error) {
     // Handle Errors here.
@@ -14,54 +14,24 @@ function validateForm(){
   });
 }
 
-function signo(){
-  console.log("sign out");
-  firebase.auth().signOut().then(function() {
-    window.location.href = "https://try1-d007.firebaseapp.com/login.html";
-    // Sign-out successful.
+function cancelbutton(){
+  window.location.href = "https://aptipediasite.firebaseapp.com/intro.html";
+}
+
+function forget(){
+  var auth = firebase.auth();
+  var emailAddress = "aptipedia2018@gmail.com";
+
+  auth.sendPasswordResetEmail(emailAddress).then(function() {
+    // Email sent.
   }).catch(function(error) {
-    window.alert("Error: "+error.message);
+    window.alert("Error :"+ error.message);
     // An error happened.
   });
 }
 
-function questionbank(){
-  console.log("hey");
-  var i;
-  var bankno;
-  for(i=1;i<=10;i++){
-    var text = "q" + i;
-    var sb = "startbtn" + i;
+/* functions defination over */
 
-    document.getElementById(sb).style.display = "none";
-    document.getElementById(text).style.display = "block";
-  }
-
-  var fireref = firebase.database().ref("Bank5");
-  i = 0;
-    fireref.once("value",function(snap){
-      snap.forEach(function(childsnap) {
-        var childKey = childsnap.key;
-        console.log(childKey);
-        var qt = document.getElementById(childKey);
-        var t_head = qt.tHead;
-        var t_body = document.getElementsByTagName("tbody")[i];
-        i++;
-        t_head.children[0].children[0].innerHTML = snap.child(childKey+"/Question").val();
-        t_body.rows[0].cells[1].innerHTML = snap.child(childKey+"/Options/0").val();
-        t_body.rows[1].cells[1].innerHTML = snap.child(childKey+"/Options/1").val();
-        t_body.rows[2].cells[1].innerHTML = snap.child(childKey+"/Options/2").val();
-        t_body.rows[3].cells[1].innerHTML = snap.child(childKey+"/Options/3").val();
-      });
-
-    });
-
-}
-
-for(i=1;i<=10;i++){
-  var text = "q" + i;
-  document.getElementById(text).style.display = "none";
-}
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
