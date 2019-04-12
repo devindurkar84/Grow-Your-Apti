@@ -1,0 +1,139 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* end of meyerweb reset*/
+
+
+/* flat ui colors*/
+
+.american-poster{
+/*  background-color: #636e72;*/
+    background-image: url(images/background-3077539_1920.png);
+
+}
+
+.dracula-orchid{
+  background-color: #2d3436;
+}
+
+.city-light{
+  //background-color: #dfe6e9;
+   
+    background-image:url(images/atomic.jpg);
+    background-size: cover;
+}
+
+.soothing-breeze{
+ /* //background-color: #b2bec3*/
+      background-image:url(images/smoke.jpg) ;
+    
+}
+
+.purple-corallite{
+  background-color: #574b90;
+}
+
+.snap{
+  height: 100vh;
+}
+
+
+button {
+    background-color:Blue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+	font-style:bold;
+	font-size:medium;
+	 box-shadow: 0 9px #999;
+}
+button:active {
+	 box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  opacity:1;
+}
+
+a{color:white;}
+a:hover{color:red;}
+button:hover
+{
+	background-color:#555555;
+}
+
+h1 {
+        -webkit-animation-duration: 1s;
+        -webkit-animation-name: glow;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-iteration-count: infinite;
+        animation-duration: 1s;
+        animation-name: glow;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        font-size:35px;
+		font-style:bold;
+
+    
+    }
+  @-webkit-keyframes glow {
+        from { text-shadow: 0 0 0px green; }
+        to { text-shadow: 0 0 20px white; }
+    }
+
+.rowheight{
+    color:white;
+    padding:50px;
+    font-family: 'Chela One',cursive;
+}
+
+
+
+
